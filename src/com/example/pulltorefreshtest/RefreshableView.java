@@ -239,7 +239,7 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
 					header.setLayoutParams(headerLayoutParams);
 				}
 				break;
-			case MotionEvent.ACTION_UP:		//抬起手势什么也不做
+			case MotionEvent.ACTION_UP:		//抬起手势什么也不做，这个手势也包含了最后抬起的坐标
 			default:
 				if (currentStatus == STATUS_RELEASE_TO_REFRESH) {
 					// 松手时如果是释放立即刷新状态，就去调用正在刷新的任务 
@@ -284,8 +284,8 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
 	 */
 	public void finishRefreshing() {
 		currentStatus = STATUS_REFRESH_FINISHED;
-		preferences.edit().putLong(UPDATED_AT + mId, System.currentTimeMillis()).commit();
-		new HideHeaderTask().execute();
+		preferences.edit().putLong(UPDATED_AT + mId, System.currentTimeMillis()).commit();  //放入现在的刷新时间，以便下次刷新时计算出上次刷新时间
+		new HideHeaderTask().execute();    //刷新完成后，调用隐藏下拉头的方法
 	}
 
 	/**
@@ -334,9 +334,9 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
 				rotateArrow();
 			} else if (currentStatus == STATUS_REFRESHING) {
 				description.setText(getResources().getString(R.string.refreshing));
-				progressBar.setVisibility(View.VISIBLE);
+				progressBar.setVisibility(View.VISIBLE);   //正在刷新的时候把等待控件设为可见
 				arrow.clearAnimation();
-				arrow.setVisibility(View.GONE);
+				arrow.setVisibility(View.GONE);				//箭头设为不可见
 			}
 			refreshUpdatedAtValue();
 		}
