@@ -336,7 +336,7 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
 				description.setText(getResources().getString(R.string.refreshing));
 				progressBar.setVisibility(View.VISIBLE);
 				arrow.clearAnimation();
-				arrow.setVisibility(View.GONE);
+				arrow.setVisibility(View.GONE);  //将箭头设置不可见
 			}
 			refreshUpdatedAtValue();
 		}
