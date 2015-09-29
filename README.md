@@ -1,7 +1,10 @@
 # pulltorefreshtest
-这是一个下拉刷新的例子，转载自郭林的博客。
+*****
+###这是一个下拉刷新的demo，转自郭霖的博客
+*****
+####下拉前
+![ListView](https://github.com/Mage-M/pulltorefreshtest/raw/master/res/drawable-hdpi/device-2015-09-29-152036.png)
 
-
-我在学习的同时加了一些注释进去，方便学习和回顾。
-
-当多处都需要使用下拉刷新时，可以抽象成一个布局，然后在需要的地方引入这个下拉刷新布局就ok了。
+*****
+####下拉中
+![ListView](https://github.com/Mage-M/pulltorefreshtest/raw/master/res/drawable-hdpi/device-2015-09-29-152046.png)
